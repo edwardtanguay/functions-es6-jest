@@ -20,16 +20,28 @@ const makePairs = (obj) => {
 
 // 3
 const without = (obj, prop) => {
-	const retObj = {};
-	const items = Object.entries(obj); // ['boats', 1], ['b', 2]
-	items.forEach(item => {
-		const key = item[0];
-		const value = item[1];
-		if (key !== prop) {
-			retObj[key] = value;
-		}
-	});
-	return retObj;
+	// if (obj === undefined) return {};
+	// const retObj = {};
+	// const items = Object.entries(obj); 
+	// items.forEach(item => {
+	// 	const key = item[0];
+	// 	const value = item[1];
+	// 	if (key !== prop) {
+	// 		retObj[key] = value;
+	// 	}
+	// });
+	// return retObj;
+	if (isPlainObject(obj) && prop !== undefined) {
+		return Object
+			.keys(obj)
+			.reduce((newObj, key) => {
+				if (key !== prop) {
+					newObj[key] = obj[key]
+				}
+				return newObj
+			}, {});
+	}
+	return {};
 };
 
 module.exports = { isPlainObject, makePairs, without };
