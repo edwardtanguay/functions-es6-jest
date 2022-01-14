@@ -13,9 +13,23 @@ const makePairs = (obj) => {
 	const keys = [];
 	for (const key in obj) {
 		const value = obj[key];
-		keys.push([key,value]);
-	}	
+		keys.push([key, value]);
+	}
 	return keys;
 };
 
-module.exports = { isPlainObject, makePairs };
+// 3
+const without = (obj, prop) => {
+	const retObj = {};
+	const items = Object.entries(obj); // ['boats', 1], ['b', 2]
+	items.forEach(item => {
+		const key = item[0];
+		const value = item[1];
+		if (key !== prop) {
+			retObj[key] = value;
+		}
+	});
+	return retObj;
+};
+
+module.exports = { isPlainObject, makePairs, without };
