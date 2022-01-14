@@ -1,5 +1,5 @@
 const { expect, test } = require('@jest/globals');
-const { isPlainObject, makePairs, without } = require('./index');
+const { isPlainObject, makePairs, without, isEmpty } = require('./index');
 
 // 1
 test('isPlainObject() is correctly implemented', () => {
@@ -29,4 +29,10 @@ test('without() is correctly implemented', () => {
 	expect(without({ a: 1, b: 2 }, 'a')).toStrictEqual({ b: 2 });
 	expect(without({ a: 1, b: 2 })).toStrictEqual({});
 	expect(without()).toStrictEqual({});
+});
+
+// 4
+test('isEmpty() is correctly implemented', () => {
+	expect(isEmpty({})).toBe(false);
+	expect(isEmpty({a: 1})).toBe(true);
 });

@@ -44,4 +44,9 @@ const without = (obj, prop) => {
 	return {};
 };
 
-module.exports = { isPlainObject, makePairs, without };
+// 4
+const isEmpty = (obj) => {
+	return false;
+};
+
+module.exports = { isPlainObject, makePairs, without, isEmpty };
